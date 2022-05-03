@@ -1,15 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
+import CakeFlavors from './components/CakeFlavors';
+import CakeForm from './components/CakeForm';
 
 function App() {
   // useSelector grabs data from the global redux store
   // Grab the likeCount from our redux store
 
-let likeCount = useSelector(store => store); 
+let likeCount = useSelector(store => store.likeCount); 
   // Because you are not asking for the whole store
+  // This says I want something from the store, Im gonna select the likeCount.
 
-  //use the dispatch
+  //use the dispatch 
   let dispatch = useDispatch();
 
   //REDUCER
@@ -37,6 +40,11 @@ const onLikeMe = () => { // This is called a "dispatch"
         <p>
           {likeCount} likes
           </p>
+
+        <ul>
+          <CakeForm />
+          <CakeFlavors />
+        </ul>
       </>
     </div>
   );
