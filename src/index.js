@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore } from 'redux'; //grabbing one thing from the redux library
+import { createStore, applyMiddleware } from 'redux'; //grabbing one thing from the redux library
 import { Provider } from 'react-redux';
+import logger from 'redux-logger'; //🪵
 
 // Whateve is returned from this function 
   // is our global state (aka "store")
@@ -23,7 +24,10 @@ const likeCount = (state = 5732, action) => {
 };
 
 // Create out resux store aka Nevada aka the cool uncle
-const storeInstance = createStore(likeCount);
+const storeInstance = createStore(
+  likeCount,
+  applyMiddleware(logger)
+  );
 
 const root = ReactDOM.createRoot(document.getElementById('root')); // Where we first render the app.
 root.render(
